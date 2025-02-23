@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4 dark:bg-gray-800">
+  <div class="shrink-0">
+    <div class="h-12 w-12 bg-blue-500 rounded-full flex items-center justify-center">
+      <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+    </div>
+  </div>
+  <div>
+    <div class="text-xl font-medium text-black dark:text-white">{title}</div>
+    <p class="text-gray-500 dark:text-gray-300">{description}</p>
+  </div>
+</div>

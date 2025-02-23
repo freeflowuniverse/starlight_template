@@ -17,6 +17,28 @@ hero:
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
+import ExampleCard from '../../components/ExampleCard.astro';
+import BarChart from '../../components/charts/BarChart';
+import RadarChart from '../../components/charts/RadarChart';
+
+## Chart.js Examples
+<div class="my-8 space-y-8">
+  <div>
+    <h3 class="text-lg font-semibold mb-4">Bar Chart Example</h3>
+    <BarChart client:only="react" />
+  </div>
+  
+  <div>
+    <h3 class="text-lg font-semibold mb-4">Radar Chart Example</h3>
+    <RadarChart client:only="react" />
+  </div>
+</div>
+
+## Tailwind Example
+<ExampleCard 
+  title="Tailwind Component" 
+  description="This card is styled using Tailwind CSS classes!"
+/>
 
 ## Next steps
 

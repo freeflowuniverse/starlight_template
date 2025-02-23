@@ -1,6 +1,17 @@
 {
+  "name": "testsite",
   "title": "Internet Geek",
-  "url": "https://friends.threefold.info",
+  "url": "https://threefold.info",
   "buildDest":["root@info.ourworld.tf:/root/hero/www/test"],
-  "buildDestDev":["root@info.ourworld.tf:/root/hero/www/test"]
+  "buildDestDev":["root@info.ourworld.tf:/root/hero/www/test"],
+  "content": [
+    {
+      "url": "https://github.com/user/repo/raw/main/",
+      "dest": "/some_content/",
+      "replacer": {
+        "ProjectName": "My Awesome Project",
+        "Author": "John Doe"
+      }
+    }
+  ]  
 }
