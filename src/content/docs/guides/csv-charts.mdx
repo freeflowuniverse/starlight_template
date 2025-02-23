@@ -1,0 +1,92 @@
+---
+title: CSV Charts Demo
+description: Demonstration of CSV data visualization using various chart types
+---
+
+import CsvChartWrapper from '../../../components/CsvChartWrapper.astro';
+
+# CSV Data Visualization
+
+This guide demonstrates how to visualize CSV data using different chart types. The example below shows funding data represented in line, bar, and pie charts.
+
+## Live Demo
+
+<CsvChartWrapper />
+
+## Implementation Details
+
+The demo uses:
+
+- `CsvReader` - A TypeScript library for parsing and processing CSV data
+- React Chart.js components for visualization
+- Support for different period types (year, quarter, month)
+- Unit conversion (normal, thousand, million, billion)
+
+### CSV Data Structure
+
+The CSV file uses pipe-separated values with the following columns:
+- Name
+- Description
+- AggregateType
+- Tags
+- Subgroup
+- Monthly values (M1-M60)
+
+### Chart Types
+
+1. **Line Chart**
+   - Best for showing trends over time
+   - Displays yearly funding data
+   - Supports tooltips and hover effects
+
+2. **Bar Chart**
+   - Ideal for comparing values across periods
+   - Shows funding distribution by year
+   - Includes legend and axis labels
+
+3. **Pie Chart**
+   - Perfect for showing proportional data
+   - Visualizes funding distribution
+   - Features interactive legend
+
+### Code Example
+
+```tsx
+// Example usage of CsvReader with charts
+const csvReader = new CsvReader(csvContent);
+
+const yearlyData = csvReader.getDataAsList({
+  rowname: 'funding_our_investor',
+  periodType: PeriodType.Year,
+  unit: UnitType.Million
+});
+
+const labels = csvReader.getHeaderAsList(PeriodType.Year);
+
+// Render chart
+<LineChart
+  title="Funding Overview"
+  titleSub="Yearly funding data"
+  data={yearlyData}
+  labels={labels}
+  rowname="Funding"
+/>
+```
+
+## Features
+
+- **Data Processing**
+  - Filter rows by name or tags
+  - Aggregate data by different periods
+  - Convert units (e.g., to millions)
+
+- **Chart Customization**
+  - Configurable titles and subtitles
+  - Responsive layouts
+  - Interactive tooltips
+  - Custom colors and styles
+
+- **Data Analysis**
+  - Compare different time periods
+  - Analyze funding patterns
+  - Visualize distributions
