@@ -3,11 +3,14 @@ title: Charts
 description: Various chart examples using Chart.js
 ---
 
+import { StackedLineChart, RadarChart, LineChart, BarChart, DoughnutChart,PolarChart } from '../../../components/charts';
+
+
 ## Bar Chart Example
 
 Basic bar chart showing distribution of votes across different colors.
 
-<BarChart />
+<BarChart client:load />
 
 ## Line Charts
 
@@ -15,13 +18,13 @@ Basic bar chart showing distribution of votes across different colors.
 
 Line chart showing multiple datasets over time.
 
-<LineChart />
+<LineChart client:load />
 
 ### Stacked Area
 
 Stacked line chart showing cumulative values over time.
 
-<StackedLineChart />
+<StackedLineChart client:load />
 
 ## Circular Charts
 
@@ -29,13 +32,13 @@ Stacked line chart showing cumulative values over time.
 
 Doughnut chart with multiple datasets and a center cutout.
 
-<DoughnutChart />
+<DoughnutChart client:load />
 
 ### Polar Area Chart
 
 Polar area chart comparing multiple metrics across categories.
 
-<PolarChart />
+<PolarChart client:load />
 
 ## Features
 

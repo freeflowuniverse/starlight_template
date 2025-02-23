@@ -3,13 +3,13 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
-
+import db from '@astrojs/db';
 import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
     integrations: [tailwind(), react({
-        include: ['**/charts/*.jsx']
+        include: ['**/components/**/*.jsx']
 		}), starlight({
         title: 'My Docs',
         social: {
@@ -30,5 +30,5 @@ export default defineConfig({
             },
         ],
         customCss: ['./src/tailwind.css']
-		}), mdx()],
+		}), mdx(),db()],
 });
