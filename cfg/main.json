@@ -1,0 +1,6 @@
+{
+  "title": "Internet Geek",
+  "url": "https://friends.threefold.info",
+  "buildDest":["root@info.ourworld.tf:/root/hero/www/test"],
+  "buildDestDev":["root@info.ourworld.tf:/root/hero/www/test"]
+}
