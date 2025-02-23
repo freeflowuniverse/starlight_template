@@ -20,16 +20,14 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 import ExampleCard from '../../components/ExampleCard.astro';
 import BarChart from '../../components/charts/BarChart';
 import RadarChart from '../../components/charts/RadarChart';
+import StackedLineChart from '../../components/charts/StackedLineChart';
 
 ## Chart.js Examples
 <div class="my-8 space-y-8">
   <div>
-    <h3 class="text-lg font-semibold mb-4">Bar Chart Example</h3>
-    <BarChart client:only="react" />
-  </div>
-  
+    <StackedLineChart client:only="react" />
+  </div>  
   <div>
-    <h3 class="text-lg font-semibold mb-4">Radar Chart Example</h3>
     <RadarChart client:only="react" />
   </div>
 </div>

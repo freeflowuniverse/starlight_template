@@ -1,0 +1,79 @@
+---
+title: Charts
+description: Various chart examples using Chart.js
+---
+
+## Bar Chart Example
+
+Basic bar chart showing distribution of votes across different colors.
+
+<BarChart />
+
+## Line Charts
+
+### Multiple Lines
+
+Line chart showing multiple datasets over time.
+
+<LineChart />
+
+### Stacked Area
+
+Stacked line chart showing cumulative values over time.
+
+<StackedLineChart />
+
+## Circular Charts
+
+### Doughnut Chart
+
+Doughnut chart with multiple datasets and a center cutout.
+
+<DoughnutChart />
+
+### Polar Area Chart
+
+Polar area chart comparing multiple metrics across categories.
+
+<PolarChart />
+
+## Features
+
+All charts include:
+
+- Responsive design
+- Dark mode support
+- Interactive tooltips
+- Customizable colors and styles
+- Multiple dataset support
+- Automatic legend generation
+
+## Implementation
+
+Charts are implemented using Chart.js with a custom BaseChart component that handles:
+
+- Theme switching (light/dark mode)
+- Consistent styling
+- Responsive behavior
+- Color management
+
+Example usage:
+
+```jsx
+import ChartComponent from '../components/BaseChart';
+
+export default function MyChart() {
+  const data = {
+    labels: ['Label 1', 'Label 2'],
+    datasets: [{
+      label: 'Dataset 1',
+      data: [10, 20]
+    }]
+  };
+
+  const options = {
+    // Chart.js options
+  };
+
+  return <ChartComponent type="line" data={data} options={options} />;
+}

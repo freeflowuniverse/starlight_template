@@ -18,12 +18,12 @@ export default function ChartComponent({ type, data, options = {}, className = '
     
     // Default colors for datasets if not provided
     const defaultColors = [
-      { bg: 'rgba(255, 99, 132, 0.5)', border: 'rgb(255, 99, 132)' },
-      { bg: 'rgba(54, 162, 235, 0.5)', border: 'rgb(54, 162, 235)' },
-      { bg: 'rgba(255, 206, 86, 0.5)', border: 'rgb(255, 206, 86)' },
-      { bg: 'rgba(75, 192, 192, 0.5)', border: 'rgb(75, 192, 192)' },
-      { bg: 'rgba(153, 102, 255, 0.5)', border: 'rgb(153, 102, 255)' },
-      { bg: 'rgba(255, 159, 64, 0.5)', border: 'rgb(255, 159, 64)' }
+      { bg: 'rgba(255, 99, 132, 0.3)', border: 'rgb(255, 99, 132)' },
+      { bg: 'rgba(54, 162, 235, 0.3)', border: 'rgb(54, 162, 235)' },
+      { bg: 'rgba(255, 206, 86, 0.3)', border: 'rgb(255, 206, 86)' },
+      { bg: 'rgba(75, 192, 192, 0.3)', border: 'rgb(75, 192, 192)' },
+      { bg: 'rgba(153, 102, 255, 0.3)', border: 'rgb(153, 102, 255)' },
+      { bg: 'rgba(255, 159, 64, 0.3)', border: 'rgb(255, 159, 64)' }
     ];
 
     // Apply default colors to datasets if not specified
@@ -46,43 +46,58 @@ export default function ChartComponent({ type, data, options = {}, className = '
     // Set default options based on theme
     const defaultOptions = {
       responsive: true,
-      color: isDark ? '#fff' : '#000',
+      color: isDark ? '#ffffff' : '#000',
       scales: {
         x: {
-          ticks: { color: isDark ? '#fff' : '#000' },
-          grid: { color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)' }
+          ticks: { 
+            color: isDark ? '#ffffff' : '#000',
+            textStrokeWidth: isDark ? 2 : 0,
+            textStrokeColor: isDark ? 'rgba(0, 0, 0, 0.5)' : 'transparent'
+          },
+          grid: { color: isDark ? 'rgba(255, 255, 255, 0.4)' : 'rgba(0, 0, 0, 0.1)' }
         },
         y: {
-          ticks: { color: isDark ? '#fff' : '#000' },
-          grid: { color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)' }
+          ticks: { 
+            color: isDark ? '#ffffff' : '#000',
+            textStrokeWidth: isDark ? 2 : 0,
+            textStrokeColor: isDark ? 'rgba(0, 0, 0, 0.5)' : 'transparent'
+          },
+          grid: { color: isDark ? 'rgba(255, 255, 255, 0.4)' : 'rgba(0, 0, 0, 0.1)' }
         },
         r: {
-          ticks: { color: isDark ? '#fff' : '#000' },
-          grid: { color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)' },
-          angleLines: { color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)' }
+          ticks: { 
+            color: isDark ? '#ffffff' : '#000',
+            textStrokeWidth: isDark ? 2 : 0,
+            textStrokeColor: isDark ? 'rgba(0, 0, 0, 0.5)' : 'transparent'
+          },
+          grid: { color: isDark ? 'rgba(255, 255, 255, 0.4)' : 'rgba(0, 0, 0, 0.1)' },
+          angleLines: { color: isDark ? 'rgba(255, 255, 255, 0.4)' : 'rgba(0, 0, 0, 0.1)' }
         }
       },
       plugins: {
         legend: {
-          labels: { color: isDark ? '#fff' : '#000' }
+          labels: { 
+            color: isDark ? '#ffffff' : '#000',
+            textStrokeWidth: isDark ? 2 : 0,
+            textStrokeColor: isDark ? 'rgba(0, 0, 0, 0.5)' : 'transparent'
+          }
         },
         title: {
           display: true,
-          color: isDark ? '#fff' : '#000'
+          color: isDark ? '#ffffff' : '#000',
+          font: {
+            weight: isDark ? '600' : '400'
+          }
         },
         tooltip: {
-          titleColor: isDark ? '#fff' : '#000',
-          bodyColor: isDark ? '#fff' : '#000',
+          titleColor: isDark ? '#ffffff' : '#000',
+          bodyColor: isDark ? '#ffffff' : '#000',
           backgroundColor: isDark ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 0.8)',
           borderColor: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
         }
       },
       ...options
     };
-
-    // Set global defaults
-    Chart.defaults.color = isDark ? '#fff' : '#000';
-    Chart.defaults.borderColor = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
 
     // Create chart instance
     const ctx = chartRef.current.getContext('2d');
@@ -98,19 +113,17 @@ export default function ChartComponent({ type, data, options = {}, className = '
       if (chartInstance.current) {
         const chart = chartInstance.current;
         
-        // Update global defaults
-        Chart.defaults.color = newIsDark ? '#fff' : '#000';
-        Chart.defaults.borderColor = newIsDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
-        
         // Update options
-        chart.options.color = newIsDark ? '#fff' : '#000';
+        chart.options.color = newIsDark ? '#ffffff' : '#000';
         if (chart.options.scales) {
           ['x', 'y', 'r'].forEach(scale => {
             if (chart.options.scales[scale]) {
-              chart.options.scales[scale].ticks.color = newIsDark ? '#fff' : '#000';
-              chart.options.scales[scale].grid.color = newIsDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+              chart.options.scales[scale].ticks.color = newIsDark ? '#ffffff' : '#000';
+              chart.options.scales[scale].ticks.textStrokeWidth = newIsDark ? 2 : 0;
+              chart.options.scales[scale].ticks.textStrokeColor = newIsDark ? 'rgba(0, 0, 0, 0.5)' : 'transparent';
+              chart.options.scales[scale].grid.color = newIsDark ? 'rgba(255, 255, 255, 0.4)' : 'rgba(0, 0, 0, 0.1)';
               if (scale === 'r') {
-                chart.options.scales[scale].angleLines.color = newIsDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+                chart.options.scales[scale].angleLines.color = newIsDark ? 'rgba(255, 255, 255, 0.4)' : 'rgba(0, 0, 0, 0.1)';
               }
             }
           });
@@ -119,14 +132,19 @@ export default function ChartComponent({ type, data, options = {}, className = '
         // Update plugins
         if (chart.options.plugins) {
           if (chart.options.plugins.legend) {
-            chart.options.plugins.legend.labels.color = newIsDark ? '#fff' : '#000';
+            chart.options.plugins.legend.labels.color = newIsDark ? '#ffffff' : '#000';
+            chart.options.plugins.legend.labels.textStrokeWidth = newIsDark ? 2 : 0;
+            chart.options.plugins.legend.labels.textStrokeColor = newIsDark ? 'rgba(0, 0, 0, 0.5)' : 'transparent';
           }
           if (chart.options.plugins.title) {
-            chart.options.plugins.title.color = newIsDark ? '#fff' : '#000';
+            chart.options.plugins.title.color = newIsDark ? '#ffffff' : '#000';
+            chart.options.plugins.title.font = {
+              weight: newIsDark ? '600' : '400'
+            };
           }
           if (chart.options.plugins.tooltip) {
-            chart.options.plugins.tooltip.titleColor = newIsDark ? '#fff' : '#000';
-            chart.options.plugins.tooltip.bodyColor = newIsDark ? '#fff' : '#000';
+            chart.options.plugins.tooltip.titleColor = newIsDark ? '#ffffff' : '#000';
+            chart.options.plugins.tooltip.bodyColor = newIsDark ? '#ffffff' : '#000';
             chart.options.plugins.tooltip.backgroundColor = newIsDark ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 0.8)';
             chart.options.plugins.tooltip.borderColor = newIsDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
           }
